@@ -1,11 +1,10 @@
-
-
-
 from tkinter import *
 import customtkinter as CTk
 from CTkTable import *
 import sqlite3
 import os
+
+CTk.set_appearance_mode("dark")
 
 class ToplevelWindow(CTk.CTkToplevel):
     def __init__(self, *args, **kwargs):
@@ -40,7 +39,8 @@ class PasientManagement:
             width=100,
             height=50,
             text_color='white',
-            fg_color='darkblue',
+            fg_color='#0A2647',
+            hover_color='#205295',
             corner_radius=100
         )
         buttonRiwayat.pack(pady=50, padx=50, anchor='nw')
@@ -53,7 +53,8 @@ class PasientManagement:
             width=100,
             height=50,
             text_color='white',
-            fg_color='darkblue',
+            fg_color='#0A2647',
+            hover_color='#205295',
             corner_radius=100
         )
         button_create.pack(pady=50, padx=50, anchor='nw')
@@ -66,7 +67,8 @@ class PasientManagement:
             width=100,
             height=50,
             text_color='white',
-            fg_color='darkblue',
+            fg_color='#0A2647',
+            hover_color='#205295',
             corner_radius=100
         )
         buttonUpdate.pack(pady=50, padx=50, anchor='nw')
@@ -79,7 +81,8 @@ class PasientManagement:
             width=100,
             height=50,
             text_color='white',
-            fg_color='darkblue',
+            fg_color='#0A2647',
+            hover_color='#205295',
             corner_radius=100
         )
         buttonDelete.pack(pady=50, padx=50, anchor='nw')
@@ -136,10 +139,15 @@ class PasientManagement:
             corner_radius=8,
             pady=10,padx=50
         )        
-        self.gender = CTk.CTkEntry(
+        self.gender = CTk.CTkOptionMenu(
             newUpdate,
-            placeholder_text='Gender Pasien'
-        )
+            fg_color='#144272',
+            button_color ='#0A2647',
+            button_hover_color='#205295',
+            dropdown_fg_color='#2C74B3',
+            dropdown_hover_color='#205295',
+            values=["Laki - Laki", "Perempuan"]
+        )  
         gender_label = CTk.CTkLabel(
             newUpdate,
             text='Gender Pasien',  # Add your desired title here
@@ -303,11 +311,16 @@ class PasientManagement:
             fg_color=("transparent"),
             corner_radius=8,
             pady=10,padx=50
-        )        
-        self.gender = CTk.CTkEntry(
-            new,
-            placeholder_text='Gender Pasien'
         )
+        self.gender = CTk.CTkOptionMenu(
+            new,
+            fg_color='#144272',
+            button_color ='#0A2647',
+            button_hover_color='#205295',
+            dropdown_fg_color='#2C74B3',
+            dropdown_hover_color='#205295',
+            values=["Laki - Laki", "Perempuan"]
+        )        
         gender_label = CTk.CTkLabel(
             new,
             text='Gender Pasien',  # Add your desired title here
@@ -426,6 +439,15 @@ class PasientManagement:
         newDelete = CTk.CTkToplevel(app)
         newDelete.title("Delete Data")
         newDelete.geometry('190x150')   
+        title_label = CTk.CTkLabel(
+            newDelete,
+            text='Delete Data',  # Add your desired title here
+            font=('Helvetica', 20),  # Adjust the font size and family as needed
+            fg_color=("transparent"),
+            corner_radius=8,
+            pady=10,padx=50
+        )
+        title_label.pack()
         self.id = CTk.CTkEntry(
             newDelete,
             placeholder_text='Masukan ID'
